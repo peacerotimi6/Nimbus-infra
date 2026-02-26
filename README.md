@@ -1,62 +1,72 @@
-# 🚀 Nimbus Infrastructure Platform
-### Azure | Terraform | Docker | AKS | ACR | Key Vault | RBAC
+# 🚀 Nimbus Infrastructure (Terraform)
 
-This project provisions a production-style Azure cloud infrastructure for deploying a containerized web application using Infrastructure as Code (Terraform).
+This project provisions Azure infrastructure for the Nimbus containerized application using Terraform.
 
-It demonstrates:
+## 🧰 Technologies Used
 
-- Cloud-native architecture design
-- Secure container image management
-- Kubernetes deployment readiness
-- Remote state management
-- RBAC and secret management best practices
-
----
-
-## 🏗 Architecture Overview
-
-The infrastructure includes:
-
-- **Azure Resource Group**
-- **Azure Container Registry (ACR)** – Stores Docker images
-- **Azure Kubernetes Service (AKS)** – Container orchestration
-- **Azure Key Vault** – Secret management
-- **Role-Based Access Control (RBAC)** – Secure access
-- **Remote Backend (Azure Storage)** – Terraform state management
+- Terraform
+- Microsoft Azure
+- Azure Container Registry (ACR)
+- Azure Kubernetes Service (AKS)
+- Azure Key Vault
+- Azure RBAC
+- Azure Storage (Remote State Backend)
 
 ---
 
-## 🧱 High-Level Architecture Flow
+## 🏗 Infrastructure Components
 
+This Terraform configuration deploys:
 
-Local Docker Build
-│
-▼
-Azure Container Registry (ACR)
-│
-▼
-Azure Kubernetes Service (AKS)
-│
-▼
-Nimbus Web Application
-
-
-Secrets are securely stored in **Azure Key Vault**, and access is controlled using **RBAC**.
+- Azure Resource Group
+- Azure Container Registry (ACR)
+- Azure Kubernetes Service (AKS)
+- Azure Key Vault
+- Role-Based Access Control (RBAC)
+- Remote Backend Storage for Terraform state
 
 ---
 
 ## 📁 Project Structure
-
-
 terraform/
 │
+├── main.tf # Resource group & core resources
 ├── ACR.tf # Azure Container Registry
-├── AKS.tf # Azure Kubernetes Service
-├── backend.tf # Remote state backend (Azure Storage)
-├── keyvault.tf # Azure Key Vault
-├── main.tf # Resource Group + core setup
+├── AKS.tf # Kubernetes cluster
+├── keyvault.tf # Secret management
 ├── rbac.tf # IAM role assignments
-├── local.tf # Local values
+├── backend.tf # Remote backend configuration
+├── provider.tf # Azure provider setup
 ├── variables.tf # Input variables
+├── local.tf # Local values
 ├── output.tf # Outputs
-└── provider.tf # Azure provider configuration
+├──.gitignore     # Excludes .terraform/, state files, etc.
+
+
+🛠️ Prerequisites
+
+Terraform
+ ≥ v1.5
+
+Azure CLI
+ ≥ v2.45
+
+An active Azure subscription
+
+Proper IAM permissions (Owner or Contributor)
+
+Usage
+
+Login to Azure
+
+az login
+
+
+Initialize Terraform
+
+terraform init
+
+
+Validate configuration
+
+terraform validate
