@@ -1,9 +1,19 @@
+cat <<EOL > .gitignore
+# Terraform cache
+**/.terraform/*
+.terraform.lock.hcl
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Override files
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Variable files with secrets (adjust as needed)
+# Variable files with secrets
 *.tfvars
 *.tfvars.json
 terraform.tfvars
@@ -17,4 +27,4 @@ terraform.tfvars
 # OS-specific
 .DS_Store
 Thumbs.db
-provider.tf
+EOL
